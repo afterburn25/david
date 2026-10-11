@@ -14,3 +14,10 @@
 - Safe preview ZIP contains only `showroom-glb.php`, `assets/rooms/luxury-showroom-v03-optimized.glb`, and instructions. Existing index stays untouched.
 
 **Next moves:** commit actual source + GLB to GitHub (currently missing!), set CI asset build and tests, render in full Three.js browser, match approved image materials, commission/include properly licensed realistic GLB instruments/furniture, baked lighting and smooth collision/room culling. Only then make main showroom replacement, with rollback and full PHP app tests. Track commits and test evidence explicitly.
+
+
+## Repo sync addendum — Oct 11 2026
+- Committed `optimize_gallery_v03.py`, `tests_v03.py`, `docs/DESIGN_TARGET.md`, and `docs/ASSET_PROVENANCE.md` to `main`.
+- The full `build_gallery_v03.py`, `deploy/showroom-glb.php`, and optimized GLB binary are **still only in the downloadable source ZIP**, not the repository. See [GitHub issue #1](https://github.com/afterburn25/david/issues/1). Do not claim the GitHub source is complete yet.
+- Fidelity improvements/asset sourcing tracked at [issue #2](https://github.com/afterburn25/david/issues/2).
+- The CI workflow exists but source-dependent validation cannot go green until issue #1 is resolved.
