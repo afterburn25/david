@@ -34,3 +34,6 @@ Added 3D nickel strings, physically spaced frets, tuner housings and posts, brid
 **Verified:** GLB round-trip/material/UV/selection invariance tests, PHP+JS syntax, 13,650 spatial collision regression checks, fake-DB PHP HTTP/GLB header, ZIP test, VTK before/after overview and close-up rendering. **Not verified:** actual WebGL browser behavior, device 60 FPS, production MySQL/CSRF cart, matching the photorealistic reference. Visual improvement is incremental and remains far below approved images.
 
 The complete v0.10 generator/optimizer and compiled GLB are in downloadable ZIP; **they are not yet committed to GitHub main**. Source sync of v0.6, v0.7, v0.9 staging and v0.10 remains open; existing GitHub main is at v0.5 source. See `docs/V10_STAGING.md`. Never overwrite `index.php`, config, installer, bootstrap, or database while testing.
+
+### GitHub source sync, follow-up
+Verified new commits to `main`: `build_gallery_v06.py` commit `094ff2d2d448284f6f2047b42bff47b3798bdd93`, `build_gallery_v10.py` commit `886945f5cd6c9d8b4be62093f75554fcbfc0a4e5`. Other exact v0.7/v0.10 optimizers/viewer/tests, plus compiled GLB, are **not yet synced to GitHub** as of this checkpoint; use the complete source ZIP to restore them, and verify subsequent commits. v0.10 still requires v0.7 compiled baseline, and no successful CI/WebGL check has been demonstrated.
