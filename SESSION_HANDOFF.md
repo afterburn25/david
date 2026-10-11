@@ -32,3 +32,11 @@ Actual work: 81 guitar bodies with 6 strings, equal-temperament frets, real tune
 
 ### GitHub source sync, follow-up
 Verified new commits to `main`: `build_gallery_v06.py` commit `094ff2d2d448284f6f2047b42bff47b3798bdd93`, `build_gallery_v10.py` commit `886945f5cd6c9d8b4be62093f75554fcbfc0a4e5`. Other exact v0.7/v0.10 optimizers/viewer/tests, plus compiled GLB, are **not yet synced to GitHub** as of this checkpoint; use the complete source ZIP to restore them, and verify subsequent commits. v0.10 still requires v0.7 compiled baseline, and no successful CI/WebGL check has been demonstrated.
+
+
+## Oct 11 2026 — v0.11 Piano & Strings geometry milestone
+**Built and tested locally; not yet accepted as photorealistic.** Derived from the v0.10 optimized GLB. New `build_gallery_v11.py` replaces 24 selected low-poly violin soundboards with spline-lofted, genuinely thick 3D PBR violin bodies and models their four strings, pegs, scrolls, bridges, f-holes and fingerboards. A curved grand piano body replaces the low-poly pick mesh, with a physically raised lid, brass rim, harp/strings, 52 separately modeled white keys and 35 black keys, legs, pedals and bench. Removed four obsolete v10 violin/piano accessory batches to avoid duplicate objects. These are real 3D meshes, not image planes.
+
+Verified optimized asset: **280 mesh nodes, 917,738 triangles, 17,782,756 bytes**, **133 unchanged selectable mesh names**, 10 exact-sha+coordinate product hotspot bindings. `tests_v11.py` passed GLB reimport, mesh topology, alpha, inherited pick geometry, PHP/JS syntax, v0.9 movement/hotspot runtime tests and isolated fake-DB PHP HTTP 200 plus GLB header. Offscreen VTK render comparisons for piano, violin and salon were generated. **WebGL browser interactions, 60 FPS, live MySQL and photo-reference fidelity are NOT verified.** Visible result is better shaped but still stylized.
+
+Downloadable conversation artifacts: `david-v0.11-safe-showroom-preview.zip` (6 files; excludes installer/bootstrap/config/index) and `david-v0.11-source-tests-proof.zip` (25 files including GLB and all four approved reference PNGs). Note: source and binary GLB are **not yet committed to GitHub main**; next step is to sync exact build scripts and re-run CI. Never use a staging package to overwrite the live application homepage or installer.
