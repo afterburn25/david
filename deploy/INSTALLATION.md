@@ -1,15 +1,23 @@
-# GLB preview integration — milestone 01
+# DAVID v0.3 safe preview install (NOT a production homepage replacement)
 
-The first independently loadable GLB scene and optional PHP browser viewer are currently packaged as a downloadable development ZIP in the originating ChatGPT conversation. **They are not yet committed to this repository**, so retrieving this repo alone will not reproduce the scene until those files are uploaded. This distinction is intentional to avoid claiming a complete implementation.
+Current packaged `david-v0.3-luxury-glb-safe-preview.zip` contains only:
+- `showroom-glb.php` (PHP viewer; from repo `deploy/showroom-glb.php`)
+- `assets/rooms/luxury-showroom-v03-optimized.glb` (generated from `build_gallery_v03.py` + `optimize_gallery_v03.py`)
+- `UPGRADE-v03.txt`.
 
-Package contents:
-- assets/rooms/luxury-five-gallery-blockout.glb (five-room 3D environment, approximate architecture)
-- deploy/showroom-glb.php (optional GLTFLoader preview)
-- build_rooms.py (rebuild GLB deterministically using trimesh)
-- documentation.
+## On shared hosting
+1. Backup the current website and database through the host panel. **Do not rerun `/install/`**.
+2. Extract the preview ZIP in the existing site root beside `index.php`.
+3. Open `https://YOURDOMAIN/showroom-glb.php`. The existing homepage remains unchanged.
+4. Browse all five rooms; test smooth movement, clicks, inspect, catalog and cart only on mapped real database products.
+5. Restore simply by removing `showroom-glb.php` and the new GLB file if errors occur. The preview does not overwrite installed config/bootstrap, DB, installer, original index or customer files.
 
-Optional site preview: put showroom-glb.php beside the existing website index.php and put GLB at assets/rooms/luxury-five-gallery-blockout.glb. This route reads the installed PHP DB; it does not write data or override index.php. No installer, config, migrations, or schema changes.
+## Development/CI testing
+- `pip install trimesh numpy pillow shapely scipy`
+- `python build_gallery_v03.py && python optimize_gallery_v03.py && python tests_v03.py` regenerates/checks GLB locally.
+- `php -l deploy/showroom-glb.php`
+- For actual staging browser evidence, install Playwright and run `DAVID_TEST_URL=https://YOURDOMAIN/showroom-glb.php node tests/browser-smoke.mjs` (produces 5 WebGL screenshots, room/input sanity checks and observational FPS).
+- Current source comes from repository `main`; GitHub Action `.github/workflows/scene-tests.yml` regenerates/tests and publishes optimized GLB as an Actions artifact on applicable pushes. **Check workflow completion; no automated WebGL benchmark has been verified yet.**
 
-The GLB is 1.8MB and contains 2304 scene geometry nodes. **It is not photorealistic yet**; individual 3D instruments are not accurately mapped to product IDs. No full browser screenshot benchmark has passed yet.
-
-Next: commit source/GLB into this repo, integrate with existing PHP 3D UX, model realistic furniture/instruments and refine PBR assets, visual test against images, benchmark FPS and run shared-host compatibility checks.
+## Fidelity warning
+The v0.3 room geometry is genuinely 3D but NOT yet photorealistically matched to user-approved renders. Photorealism, fully accurate instruments and 60 FPS still require verification. See `docs/DESIGN_TARGET.md`, `docs/BUILD_PROGRESS.md` and issues #1/#2.
