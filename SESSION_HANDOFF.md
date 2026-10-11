@@ -27,3 +27,6 @@ Passed: 64 PHP syntax checks, JS syntax, PHP homepage with fake DB, browser inst
 
 ## Next work
 Sync the actual source into classic-storefront-v1; test MySQL migration and commerce/account/service flows, staging browser and payment provider; fix regressions and package upgrades safely; keep docs and real test results updated. Do not claim completion without evidence.
+
+## Most recent work — v2.0.0 staging build
+Read `docs/CLASSIC_STOREFRONT_V2_ROLLBACK_AND_PAYMENTS.md` first. User explicitly requested **rollback if an update breaks the site**. Local release includes /admin/upgrade-center.php staging/apply with checksum and one-time recovery code and independent /recovery/index.php for emergency file restore (not destructive SQL rewind). Includes persistent private file+SQL backups, PHP parse and ZIP validation, fail-closed permission checks. Local tests of ZIP application/restoration and deliberate migration failure passed; real shared-host MySQL/ZipArchive and live external card providers are NOT tested. v2 code and images are in download ZIPs, NOT yet on this branch. Preserve previous v1.8 instructions for other modules, but prioritize full source sync, secure staging live compatibility, 3-provider integrated payment forms and webhooks, and maintenance/restore reliability. Do NOT return to 3D showroom without new explicit request.
