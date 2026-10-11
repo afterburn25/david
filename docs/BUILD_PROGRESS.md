@@ -14,3 +14,11 @@
 2. Test in a real WebGL browser with camera screenshots and explicit hardware FPS readings.
 3. Use detailed licensed 3D instrument and furniture assets, PBR normals/roughness and baked realistic illumination.
 4. Preserve installed PHP/MySQL storefront. Upgrade only after backup/rollback and smoke-test.
+
+
+## October 11, 2026 — v0.5 actual geometry/material upgrade
+- Built `build_gallery_v05.py` on v0.4 with seven PBR wood/lacquer instrument finishes and normal-map textures on 81 guitar bodies, physically modeled pickup covers/knobs/fret inlays, ceiling plaster, niche lighting and brass details.
+- Detected texture alpha regression in VTK offscreen render (integer 1 alpha was nearly transparent); fixed it with float 1.0 and added explicit opacity assertions to `tests_v05.py`.
+- Optimized GLB: 352 mesh nodes, 195 individually selectable instrument meshes, 197,978 triangles, 9,903,168 bytes; five gallery screenshots rendered offscreen. PHP v0.5 viewer adds orbiting close-up, wheel zoom and real product slot format `r{room}_{slot}` with g1–g10 compatibility. No invented product price.
+- Local GLB, PBR/alpha, PHP and JavaScript syntax tests passed. **60 FPS, WebGL browser behavior, MySQL deployment and approved-image fidelity remain untested.** Visual screenshots show meaningful but limited detail improvement; environment is not photorealistic.
+- Committed generator/viewer/optimizer/tests source to GitHub; CI v0.5 GLB build workflow updated (`6061ba1`). GitHub combined statuses were empty at inspection, so do not assume CI passed. Compiled GLB binary remains in downloadable project ZIP, not main.
