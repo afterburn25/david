@@ -22,3 +22,6 @@ The built v1.8.0 source and ZIPs exist as downloadable artifacts in the originat
 - No fake live prices, stock, reviews or store hours.
 
 Start sessions with [SESSION_HANDOFF.md](SESSION_HANDOFF.md).
+
+## Current v2 staging release (2026-10-11)
+The user added reversible ZIP upgrades, emergency recovery, organized payments/testing, checkout signup and a wider admin. Read [v2 handoff and verified limitations](docs/CLASSIC_STOREFRONT_V2_ROLLBACK_AND_PAYMENTS.md) **before** working. v2 ZIP binaries/source are currently conversation downloads, NOT yet GitHub code. Do not enable external payment processors without real credential/sandbox/Webhook verification.
