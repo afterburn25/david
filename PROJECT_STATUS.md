@@ -8,3 +8,7 @@ Now: produce REAL 3D GLB architecture and furnishings matching approved main gal
 Missing: high-fidelity GLB instrument assets, realistic PBR materials/baked GI, 5-room integrated navigation and testing, verified photo-aligned browser screenshots, measured FPS, real shared-host install tests, safe deployment checks.
 
 Only call a milestone complete if the code/assets and verification evidence exist.
+
+
+## 2026-10-11 — optimized GLB milestone
+Five-room GLB was exported and geometry batching reduced the node count from 2304 to 212 while retaining clickable instrument bodies. Trimesh structural tests passed, PHP preview viewer syntax check passed; ZIP integrity passed. Binary asset/scripts are currently in ChatGPT downloadable milestone-02 package, **not yet committed to this repository**. This is an architectural 3D blockout, not the photorealistic reconstruction requested. Interactive Chrome/WebGL screenshot benchmark is still pending.
