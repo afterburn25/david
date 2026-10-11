@@ -1,51 +1,57 @@
-name: DAVID 3D asset validation
+name: DAVID 3D scene build and structural validation
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - 'build_gallery_v03.py'
-      - 'optimize_gallery_v03.py'
-      - 'tests_v03.py'
-      - 'assets/rooms/**'
+      - 'build_gallery_v0*.py'
+      - 'optimize_gallery_v0*.py'
+      - 'tests_v0*.py'
+      - 'deploy/showroom-glb-v05.php'
+      - '.github/workflows/scene-tests.yml'
   pull_request:
     paths:
-      - 'build_gallery_v03.py'
-      - 'optimize_gallery_v03.py'
-      - 'tests_v03.py'
-      - 'assets/rooms/**'
+      - 'build_gallery_v0*.py'
+      - 'optimize_gallery_v0*.py'
+      - 'tests_v0*.py'
+      - 'deploy/showroom-glb-v05.php'
+      - '.github/workflows/scene-tests.yml'
 
 permissions:
   contents: read
 
 jobs:
-  verify-3d:
+  validate-glb:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Install Python and PHP
+      - name: Setup Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install mesh tooling
-        run: python -m pip install 'trimesh>=4.10,<5' numpy pillow shapely scipy
-      - name: Check that complete scene source is present
+      - name: Install procedural scene dependencies
+        run: python -m pip install 'trimesh>=4.10,<5' 'numpy>=1.24,<3' 'pillow>=10,<13' 'shapely>=2,<3' 'scipy>=1.10,<2'
+      - name: Check prerequisites
         run: |
-          test -f build_gallery_v03.py || { echo 'Missing build_gallery_v03.py — source archive not committed'; exit 1; }
-          test -f optimize_gallery_v03.py || { echo 'Missing optimize_gallery_v03.py'; exit 1; }
-          test -f tests_v03.py || { echo 'Missing tests_v03.py'; exit 1; }
-          test -f deploy/showroom-glb.php || { echo 'Missing PHP showroom route'; exit 1; }
-      - name: Generate GLB from source
+          for file in build_gallery_v03.py build_gallery_v04.py build_gallery_v05.py optimize_gallery_v05.py tests_v05.py deploy/showroom-glb-v05.php; do
+            test -s "$file" || { echo "Missing required source $file"; exit 1; }
+          done
+      - name: Generate real 3D scene and optimize PBR GLB
         run: |
-          python build_gallery_v03.py
-          python optimize_gallery_v03.py
-      - name: Test mesh and PHP/JS integration
+          python build_gallery_v05.py
+          python optimize_gallery_v05.py
+      - name: Run structural, opaque-alpha and PHP/JS syntax checks
         run: |
-          php -l deploy/showroom-glb.php
-          python tests_v03.py
-      - name: Produce validation artifact
+          php -l deploy/showroom-glb-v05.php
+          python tests_v05.py
+      - name: Publish verified GLB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: david-v03-verified-scene
-          path: assets/rooms/luxury-showroom-v03-optimized.glb
-          retention-days: 14
+          name: david-v05-real-3d-scene
+          path: assets/rooms/luxury-showroom-v05-optimized.glb
+          if-no-files-found: error
+          retention-days: 30
+
+# CI verifies geometry, generated textures and PHP/JS syntax only.
+# Visual fidelity and 60 FPS MUST be measured separately in a WebGL browser.
