@@ -1,27 +1,17 @@
-# DAVID mandatory session handoff
+# DAVID handoff — v0.5, 2026-10-11
 
-**Start with:** afterburn25/david `main`, read README.md, PROJECT_STATUS.md, docs/BUILD_PROGRESS.md, docs/ACCEPTANCE.md, docs/DECISIONS.md and this file.
+Repo: `afterburn25/david` main. User selected four photorealistic luxury showroom reference images; requires TRUE fully walkable 3D rooms matching them, NOT image billboard walls or a stylized generic showroom. Five rooms: main luxury guitar gallery, acoustic hall, electric vault, brass/woodwind, grand piano/strings. Keep shared-host PHP/MySQL cart, product admin, installer safety and real product details.
 
-**Locked user intent:** replace the original Prof Erny's showroom with a genuine walkable 3D reconstruction of four approved photorealistic luxury-store images; five rooms total (Guitar Gallery, Acoustic Hall, Electric Vault, Brass/Woodwinds, Piano/Strings). No flat pictures posing as 3D. Current render quality is not accepted as final.
+## What is built v0.5
+- `build_gallery_v05.py` BUILDS UPON `build_gallery_v04.py`, which BUILDS UPON `build_gallery_v03.py`. It adds realistic varied lacquer/wood PBR finishes to 81 actually modeled guitar bodies with proper UVs, seven normal maps, controls/inlays, lit niches, warm ceiling surfaces.
+- `optimize_gallery_v05.py` batches architecture/material by room while preserving 195 pickable instrument meshes. Optimized GLB size 9,903,168 bytes, 352 nodes, 197,978 triangles.
+- `make_viewer_v05.py` transforms the optional PHP viewer to load v05 GLB; close-up orbit and wheel zoom work in static code inspection only (real browser testing still required). Admin `showroom_id` mapping now accepts `r{room}_{slot}` (e.g. r3_2) with `g1..g10` fallback and no database migration.
+- `tests_v05.py` validates GLB geometry, seven normal maps AND opacity to prevent v0.5 material alpha bug, PHP/JS syntax, five rooms, safe upgrade excluded paths. VTK render of each room generated; no WebGL benchmark.
+- `david-v0.5-luxury-safe-preview.zip` only includes optional PHP preview route + optimized GLB and instructions. Does not override live `index.php` or config/install.
+- `david-v0.5-full-source-with-proof.zip` includes generators/source and four approved image files, proof render PNGs, tests and deployment docs.
 
-**Prior PHP website:** shared-host PHP 8.1+, MySQL/MariaDB, admin/catalog/repair/order request, no real card checkout. Earlier installer/redirect/config bugs; NEVER overwrite installed `config/database.php`, `app/bootstrap.php`, `index.php`, customer files or install/storage during test upgrades. Backup+rollback first.
+IMPORTANT: This is STILL NOT visually accepted / photorealistic; do not pretend the reference images themselves became meshes via single-image reconstruction. Those cannot expose behind-the-scene geometry; photo fidelity requires artistic modeling and detailed assets.
 
-**2026-10-11 v0.3 work (local artifact ZIP, NOT in GitHub source yet):**
-- Built `build_gallery_v03.py` (PBR/texture real world geometry, 5 rooms), `optimize_gallery_v03.py` (5,351 -> 407 geometry nodes, retains 322 pickable instruments), `assets/rooms/luxury-showroom-v03-optimized.glb` (2,947,252 bytes).
-- Built `deploy/showroom-glb.php`: optional preview route with controls, raycast and verified existing g1..g10 product mapping, CSRF/live cart only on confirmed products; no arbitrary SKUs/prices. Standalone HTML for reference test; production CDN Three.js/GLTFLoader.
-- `tests_v03.py` passed GLB/PBR/name/path/PHP/JS syntax; `render_gallery_proof.py` produced five VTK offscreen screenshots. These renders confirmed room geometry but also show much more modeling and lighting work is needed.
-- **Browser test BLOCKED**: localhost navigation `net::ERR_BLOCKED_BY_ADMINISTRATOR`; no 60 FPS or live MySQL claims.
-- Safe preview ZIP contains only `showroom-glb.php`, `assets/rooms/luxury-showroom-v03-optimized.glb`, and instructions. Existing index stays untouched.
+GitHub sync: run a repo read to verify which files exist on `main`. v0.5 source/GLB may remain in downloadable archive only; do not claim committed unless GitHub confirms.
 
-**Next moves:** commit actual source + GLB to GitHub (currently missing!), set CI asset build and tests, render in full Three.js browser, match approved image materials, commission/include properly licensed realistic GLB instruments/furniture, baked lighting and smooth collision/room culling. Only then make main showroom replacement, with rollback and full PHP app tests. Track commits and test evidence explicitly.
-
-
-## Repo sync addendum — Oct 11 2026
-- Committed `optimize_gallery_v03.py`, `tests_v03.py`, `docs/DESIGN_TARGET.md`, and `docs/ASSET_PROVENANCE.md` to `main`.
-- The full `build_gallery_v03.py`, `deploy/showroom-glb.php`, and optimized GLB binary are **still only in the downloadable source ZIP**, not the repository. See [GitHub issue #1](https://github.com/afterburn25/david/issues/1). Do not claim the GitHub source is complete yet.
-- Fidelity improvements/asset sourcing tracked at [issue #2](https://github.com/afterburn25/david/issues/2).
-- The CI workflow exists but source-dependent validation cannot go green until issue #1 is resolved.
-
-
-## Source sync correction — 2026-10-11
-The original v0.3 `build_gallery_v03.py` Python generator and `deploy/showroom-glb.php` viewer have now been committed to `main`, alongside `optimize_gallery_v03.py` and `tests_v03.py`. GitHub Actions has a scene-generation/validation workflow. The compiled GLB binary and offscreen screenshot contact sheet are still supplied in the downloadable source ZIP, not directly committed into main. A workflow-produced binary artifact may be available after CI runs; verify the run, do not presume success. See issue #1 for closure criteria.
+Next: commit actual source & asset pipeline to GitHub, improve detailed realistic licensed instrument/furniture models, baked GI / soft shadow/reflection, screenshot comparisons from 5 views per room, WebGL user interaction FPS tests and safe staging smoke. Keep project progress/handoff updated every time.
