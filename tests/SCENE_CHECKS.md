@@ -1,0 +1,2 @@
+# Scene checks (milestone 02)
+Local script: tests_scene.py in downloadable package. Checks GLB parses, meshes ≤350, guitar/piano/brass/cello geometry present, finite room bounds. Results: 212 nodes, bounding extents x -10.02 to 10.02, y -0.31 to 5.125, z -10 to 98. PHP viewer passes php -l. ZIP integrity passed. **No GPU/browser visual benchmark yet.**
