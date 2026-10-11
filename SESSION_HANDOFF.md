@@ -18,3 +18,13 @@ Next: commit actual source & asset pipeline to GitHub, improve detailed realisti
 
 ## Repo sync checkpoint — v0.5
 Main now includes committed v0.4 and v0.5 generators, `optimize_gallery_v04.py`/`_v05.py`, `tests_v05.py`, and `deploy/showroom-glb-v05.php`. CI definition was updated to build v0.5 in commit `6061ba1`; do not claim green without checking a workflow run. The compiled GLB remains in `david-v0.5-full-source-with-proof.zip` and `david-v0.5-luxury-safe-preview.zip` from the current ChatGPT conversation, and should be reproducible via the committed source. Create and validate GLB in a real runner before using as a production asset. Do not overwrite live PHP `index.php` or database config.
+
+
+## Latest v0.10 staging work — continue from here
+The user asked to keep going toward photorealistic WALKABLE five-room GLB showroom matching four approved images; still NOT MET.
+
+Latest session built v0.10 *on v0.7*, not on unavailable v0.8. The full source, optimized 16,036,020-byte GLB, PHP optional route, fail-closed manifest, tests, and proof PNGs are in the **conversation downloadable `david-v0.10-complete-source-and-proof.zip`**. Safe deployment ZIP is `david-v0.10-real-3d-detail-SAFE-staging.zip`. Neither is a drop-in upgrade to live index.php.
+
+Actual work: 81 guitar bodies with 6 strings, equal-temperament frets, real tuner geometry, pickups/bridge or acoustic rosette, 72 physically modeled textured cabinet backings. 5,634 generated details batched to 276 GLB nodes; 133 named selectable bodies unchanged. Tests PASS (geometry/PBR/opacity/UV, PHP/JS syntax, Node collision 13,650 points, fake PHP staging HTTP 200/GLB header, ZIP). VTK close-up and overview comparisons produced, visually still stylized; WebGL/FPS/live MySQL unverified.
+
+**Missing upstream:** GitHub still missing v0.6/v0.7/v0.9/v0.10 source and compiled assets (v0.5 source exists); obtain source from downloaded full ZIP and reconcile actual deployed v0.8 before integrating. Do not claim GitHub has these files until independently fetched. When upgrading geometry, re-audit collider/mesh centers and re-author hotspot SHA manifest. Priority: proven licensed detailed 3D models, baked GI, true Chrome Three.js 25-angle screenshots and measured frame times on compatible hardware, non-destructive PHP test/rollback. Keep all project documents current.
