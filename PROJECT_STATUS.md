@@ -1,37 +1,23 @@
-# DAVID project status — 2026-10-11
+# DAVID status — v0.5, 2026-10-11
 
-## Actual v0.3 work performed this session
-Built a new genuine five-gallery GLB from 3D meshes rather than image billboards. The modeled environments include recessed walnut instrument displays, brass trim, LED accent surfaces, textured wood/carpet/rugs, leather lounge seating, glass showcases and distinctive guitar, saxophone, violin and piano exhibits. Fixed wall instruments' edge-on orientation.
+**Status: genuine five-room 3D reconstruction IN DEVELOPMENT, not photorealistic and not production acceptance.**
 
-Source: `build_gallery_v03.py`, `optimize_gallery_v03.py`, `deploy/showroom-glb.php`, `tests_v03.py`, `render_gallery_proof.py`, and `assets/rooms/luxury-showroom-v03-optimized.glb`.
+## Verified in this milestone
+- Rebuilt from existing v0.4 GLB source; adjusted 81 guitar body meshes with world-space proper UV mapping and 7 physically based material finishes (sunburst, tiger maple, cherry, midnight blue, ivory, spruce, mahogany). Seven material normal textures were included.
+- Added physical instrument hardware and trim (humbuckers, volume controls, pearl fret inlays), ceiling/coffer surfaces, warm LED accents in real 3D recessed niches and cabinetry.
+- Fixed an actual v0.5 regression during rendering: integer baseColorFactor alpha 1 caused the texture instruments to become nearly invisible. Changed to floating-point 1.0 and enforced opaque-alpha testing; VTK rerender confirms visible instruments.
+- 5 connected galleries, **352 mesh nodes**, **195 pickable meshes**, **197,978 triangles**, **9,903,168-byte optimized GLB**.
+- New `showroom-glb-v05.php` viewer with product close-up orbit and wheel zoom, stable admin product mapping `r{room}_{slot}` with `g1`-`g10` backward compatibility, versioned GLB cache key.
+- GLB reimport and PBR alpha regression checks passed; PHP and JavaScript syntax checks passed; five independent VTK offscreen proof images generated. The safe preview package contains only new preview files, never installer/config/bootstrap/index.
 
-Result: 5,351 unoptimized geometry nodes batched to **407** nodes, preserving **322** named pickable instrument meshes. GLB size **2,947,252 bytes**. PBR material/texture maps embedded. Test: trimesh reimport, geometry and texture checks, PHP syntax, JavaScript syntax, ZIP integrity passed; five VTK offscreen room viewport renders produced.
+## Current visual gap
+Five rooms remain stylized/mid-detail, not photorealistic. The modeled ceilings and instrument silhouettes still visibly deviate from the approved luxury photographs. No WebGL browser screenshot comparison or 60 FPS device benchmark has passed. The GLB is slightly larger than v0.4 and still needs production-grade compression + LOD.
 
-The optional PHP viewer enables room transitions, smooth WASD+mouse/touch controls, selection/closeup, quality controls and database-backed product details for exact mapped slots only, with existing CSRF-protected cart behavior.
+## Source synchronization gap
+The v0.5 scripts and GLB are in the conversation's `david-v0.5-*` downloadable archives. GitHub `main` may still lack v0.4/v0.5 generator/viewer/binary assets: fetch/verify before claiming it is a fully reproducible source. Commit them through a real GitHub-capable workflow; no fake commits.
 
-### NOT done / not validated
-This is **not a photorealistic match** to the approved luxury images. Shapes and furniture remain too simplified and lighting needs substantial improvement. Chromium testing was blocked by sandbox network administrator on localhost; Three.js interaction, mobile behavior, FPS (60 target only), installed MySQL backend and live shared-host deployment were not tested.
-
-### GitHub synchronization
-Current v0.3 generator, viewer and GLB are packaged as `david-v0.3-full-source-and-proof.zip` in the producing conversation; **they are not committed to GitHub yet**. This must be resolved next to make repository source reproducible. The 3-file `david-v0.3-luxury-glb-safe-preview.zip` is a **separate preview route**—does not overwrite index.php, config, bootstrap, SQL or installer.
-
-### Immediate next
-Commit source and GLB to repository, enable real CI asset builds, browser capture/screenshots and FPS checks, improve high-fidelity licensed models, materials, lighting, colliders and inventory mapping. Preserve all existing database/config, never run installer on upgrade.
-
-
-## Repo sync addendum — Oct 11 2026
-- Committed `optimize_gallery_v03.py`, `tests_v03.py`, `docs/DESIGN_TARGET.md`, and `docs/ASSET_PROVENANCE.md` to `main`.
-- The full `build_gallery_v03.py`, `deploy/showroom-glb.php`, and optimized GLB binary are **still only in the downloadable source ZIP**, not the repository. See [GitHub issue #1](https://github.com/afterburn25/david/issues/1). Do not claim the GitHub source is complete yet.
-- Fidelity improvements/asset sourcing tracked at [issue #2](https://github.com/afterburn25/david/issues/2).
-- The CI workflow exists but source-dependent validation cannot go green until issue #1 is resolved.
-
-
-## Source sync correction — 2026-10-11
-The original v0.3 `build_gallery_v03.py` Python generator and `deploy/showroom-glb.php` viewer have now been committed to `main`, alongside `optimize_gallery_v03.py` and `tests_v03.py`. GitHub Actions has a scene-generation/validation workflow. The compiled GLB binary and offscreen screenshot contact sheet are still supplied in the downloadable source ZIP, not directly committed into main. A workflow-produced binary artifact may be available after CI runs; verify the run, do not presume success. See issue #1 for closure criteria.
-
-
-## Local v0.7-backed runtime validation patch (2026-10-11; NOT COMMITTED)
-- The separately reported v0.8 archive was unavailable at its supplied /mnt/data path in this runtime. No changes to its grand-piano source are claimed.
-- An isolated v0.7-compatible runtime patch was built locally: room-visibility invalidation (rather than updating group/light/button state each animation frame), allocation-reduced collision functions with 13,650-point grid and sweep parity, 10 exact named geometry-to-DB-slot bindings checked against existing v0.7 GLB, and a 25-preset genuine browser screenshot/FPS harness.
-- Passed local Node structural parity, PHP lint, inline JS parser and fake-database PHP HTTP 200/GLB header tests; original v0.7 GLB unchanged. Browser screenshot/60 FPS verification **not complete**: Chromium navigation returned net::ERR_BLOCKED_BY_ADMINISTRATOR. No real MySQL or mobile test performed.
-- No photorealistic fidelity claim, no new licensed external models, no production edits. Preserve main as v0.3 reference; v0.4 through v0.8 binaries/sources are not in main. Local overlay is not a v0.8 upgrade. Staging-only until browser/DB/collision/asset acceptance.
+## Next iteration priorities
+1. Ensure all generation scripts and GLB/CI artifact in afterburn25/david `main`.
+2. Obtain high-detail licensed instrument and furniture GLBs, assemble them into actual modeled architecture; bake soft GI and realistic cabinet/ceiling lighting.
+3. Use full Three.js WebGL browser screenshot and FPS benchmark; test clicks, closeup orbit, keyboard/touch, room transitions, collision, cart security and staging upgrade.
+4. Replace production homepage ONLY after visual acceptance and automated safe rollback; never overwrite installed credentials or rerun installer.
