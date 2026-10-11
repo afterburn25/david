@@ -8,7 +8,6 @@ on:
       - 'optimize_gallery_v03.py'
       - 'tests_v03.py'
       - 'assets/rooms/**'
-      - '.github/workflows/scene-tests.yml'
   pull_request:
     paths:
       - 'build_gallery_v03.py'
