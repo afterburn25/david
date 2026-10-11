@@ -4,9 +4,9 @@
 Continue the user-approved **normal** PHP/MySQL e-commerce storefront, not the old DAVID 3D showroom. Preserve the navy/gold/ivory site, transparent main logo, gold fleur-de-lis favicon, full uncropped category images, one seamless search bar, admin sidebar state persistence and safe installer/updater.
 
 ## Actual locally built artifacts
-- `prof-ernys-v2.7-CATALOG-IMPORT-ADDON.zip` — 26,912 bytes; SHA-256 `ce4b7dbf73b6c3a02f0c4acb784eceef8861290a38c8e8d0a9ae7aafb66f6032`; strictly new files, no existing PHP/config/installer overwritten.
-- `prof-ernys-v2.7-FRESH-INSTALL-BASED-ON-v2.0.zip` — 3,458,479 bytes, source baseline explicitly v2.0.0, plus previously verified admin sidebar hotfix and new v2.7 importer. It **does not** contain all speculative/unverified v2.1–v2.6 features.
-- `prof-ernys-v2.7-SOURCE-AND-TESTS.zip` — 3,480,143 bytes with all source, tests and example CSVs.
+- `prof-ernys-v2.7-CATALOG-IMPORT-ADDON.zip` — 26,912 bytes; SHA-256 `3ed4e2fcf8062710219f5bf0467a68e0dd2faed5af97265310abf74f3e99f11a`; strictly new files, no existing PHP/config/installer overwritten.
+- `prof-ernys-v2.7-FRESH-INSTALL-BASED-ON-v2.0.zip` — 3,458,479 bytes; SHA-256 `738bb762e7dbf4a09f4bf128b7be78fbcc104474db47993b86eb6cdef8eb2b7d`; source baseline explicitly v2.0.0, plus previously verified admin sidebar hotfix and new v2.7 importer. It **does not** contain all speculative/unverified v2.1–v2.6 features.
+- `prof-ernys-v2.7-SOURCE-AND-TESTS.zip` — 3,480,143 bytes; SHA-256 `81a1ad56bd5b0fb08b8f018326c3a733999b76077d5b0bbaf2a012a31d2d7316`; with all source, tests and example CSVs.
 - Checksums `prof-ernys-v2.7-RELEASE-CHECKSUMS.json`.
 
 The ZIPs exist as downloaded conversation artifacts; they are **not yet GitHub binaries**. This document is a handoff; do not claim GitHub has the actual source until fetched and verified.
