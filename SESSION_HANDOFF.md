@@ -15,3 +15,6 @@ IMPORTANT: This is STILL NOT visually accepted / photorealistic; do not pretend 
 GitHub sync: run a repo read to verify which files exist on `main`. v0.5 source/GLB may remain in downloadable archive only; do not claim committed unless GitHub confirms.
 
 Next: commit actual source & asset pipeline to GitHub, improve detailed realistic licensed instrument/furniture models, baked GI / soft shadow/reflection, screenshot comparisons from 5 views per room, WebGL user interaction FPS tests and safe staging smoke. Keep project progress/handoff updated every time.
+
+## Repo sync checkpoint — v0.5
+Main now includes committed v0.4 and v0.5 generators, `optimize_gallery_v04.py`/`_v05.py`, `tests_v05.py`, and `deploy/showroom-glb-v05.php`. CI definition was updated to build v0.5 in commit `6061ba1`; do not claim green without checking a workflow run. The compiled GLB remains in `david-v0.5-full-source-with-proof.zip` and `david-v0.5-luxury-safe-preview.zip` from the current ChatGPT conversation, and should be reproducible via the committed source. Create and validate GLB in a real runner before using as a production asset. Do not overwrite live PHP `index.php` or database config.
