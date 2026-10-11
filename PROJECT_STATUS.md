@@ -17,3 +17,10 @@ Current v0.3 generator, viewer and GLB are packaged as `david-v0.3-full-source-a
 
 ### Immediate next
 Commit source and GLB to repository, enable real CI asset builds, browser capture/screenshots and FPS checks, improve high-fidelity licensed models, materials, lighting, colliders and inventory mapping. Preserve all existing database/config, never run installer on upgrade.
+
+
+## Repo sync addendum — Oct 11 2026
+- Committed `optimize_gallery_v03.py`, `tests_v03.py`, `docs/DESIGN_TARGET.md`, and `docs/ASSET_PROVENANCE.md` to `main`.
+- The full `build_gallery_v03.py`, `deploy/showroom-glb.php`, and optimized GLB binary are **still only in the downloadable source ZIP**, not the repository. See [GitHub issue #1](https://github.com/afterburn25/david/issues/1). Do not claim the GitHub source is complete yet.
+- Fidelity improvements/asset sourcing tracked at [issue #2](https://github.com/afterburn25/david/issues/2).
+- The CI workflow exists but source-dependent validation cannot go green until issue #1 is resolved.
