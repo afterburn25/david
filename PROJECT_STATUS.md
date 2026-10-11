@@ -1,14 +1,19 @@
-# Project status — 2026-10-11
-State: EARLY 3D RECONSTRUCTION, NOT PHOTOREALISTIC; latest prior PHP site build v0.5.0 is incomplete compared with approved images.
+# DAVID project status — 2026-10-11
 
-Existing: PHP/MySQL product catalog, admin, orders/requests, repairs; Three.js walkable prototype and product hotspots, simplified instruments.
+## Actual v0.3 work performed this session
+Built a new genuine five-gallery GLB from 3D meshes rather than image billboards. The modeled environments include recessed walnut instrument displays, brass trim, LED accent surfaces, textured wood/carpet/rugs, leather lounge seating, glass showcases and distinctive guitar, saxophone, violin and piano exhibits. Fixed wall instruments' edge-on orientation.
 
-Now: produce REAL 3D GLB architecture and furnishings matching approved main gallery, acoustic hall, electric vault, brass/woodwind, piano/string salon. Integrate GLBs into site without flat photo panels. Maintain optimized movement and clickable instrument product IDs.
+Source: `build_gallery_v03.py`, `optimize_gallery_v03.py`, `deploy/showroom-glb.php`, `tests_v03.py`, `render_gallery_proof.py`, and `assets/rooms/luxury-showroom-v03-optimized.glb`.
 
-Missing: high-fidelity GLB instrument assets, realistic PBR materials/baked GI, 5-room integrated navigation and testing, verified photo-aligned browser screenshots, measured FPS, real shared-host install tests, safe deployment checks.
+Result: 5,351 unoptimized geometry nodes batched to **407** nodes, preserving **322** named pickable instrument meshes. GLB size **2,947,252 bytes**. PBR material/texture maps embedded. Test: trimesh reimport, geometry and texture checks, PHP syntax, JavaScript syntax, ZIP integrity passed; five VTK offscreen room viewport renders produced.
 
-Only call a milestone complete if the code/assets and verification evidence exist.
+The optional PHP viewer enables room transitions, smooth WASD+mouse/touch controls, selection/closeup, quality controls and database-backed product details for exact mapped slots only, with existing CSRF-protected cart behavior.
 
+### NOT done / not validated
+This is **not a photorealistic match** to the approved luxury images. Shapes and furniture remain too simplified and lighting needs substantial improvement. Chromium testing was blocked by sandbox network administrator on localhost; Three.js interaction, mobile behavior, FPS (60 target only), installed MySQL backend and live shared-host deployment were not tested.
 
-## 2026-10-11 — optimized GLB milestone
-Five-room GLB was exported and geometry batching reduced the node count from 2304 to 212 while retaining clickable instrument bodies. Trimesh structural tests passed, PHP preview viewer syntax check passed; ZIP integrity passed. Binary asset/scripts are currently in ChatGPT downloadable milestone-02 package, **not yet committed to this repository**. This is an architectural 3D blockout, not the photorealistic reconstruction requested. Interactive Chrome/WebGL screenshot benchmark is still pending.
+### GitHub synchronization
+Current v0.3 generator, viewer and GLB are packaged as `david-v0.3-full-source-and-proof.zip` in the producing conversation; **they are not committed to GitHub yet**. This must be resolved next to make repository source reproducible. The 3-file `david-v0.3-luxury-glb-safe-preview.zip` is a **separate preview route**—does not overwrite index.php, config, bootstrap, SQL or installer.
+
+### Immediate next
+Commit source and GLB to repository, enable real CI asset builds, browser capture/screenshots and FPS checks, improve high-fidelity licensed models, materials, lighting, colliders and inventory mapping. Preserve all existing database/config, never run installer on upgrade.
