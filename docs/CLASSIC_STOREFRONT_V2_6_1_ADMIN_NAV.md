@@ -46,3 +46,10 @@ Customer email verification and account profile; order stock holds, shipping/del
 3. Verify PayPal/Square/Stripe sandbox payments/webhooks/refunds, tax/shipping merchant configuration, deliverable outbound email, backed-up recovery before live activation.
 4. Keep all external payment gateways off and treat v2.6.1 as **staging release candidate**, not final production.
 5. Never overwrite user-installed config, installer, storage, recovery or customer data.
+
+## Verified recovery checkpoint after workspace reset
+The initial v2.6.1 full-stage archives described above were created in a short-lived working container but **were not uploaded as durable conversation attachments or committed to GitHub before an environment reset**. They are **NOT available as verified downloadable builds**. The original v2.6 implementation is therefore NOT yet a reproducible completed release. Do not invent links to it.
+
+A standalone **v2.0 administrator navigation hotfix** WAS rebuilt and verified from the preserved v2.0 source ZIP, then made available as a conversation download named `prof-ernys-music-v2.0-ADMIN-NAV-PERSISTENCE-HOTFIX.zip` (4 files, SHA-256 `9e21b8d3b84aac97dd60d8d5addfd436aa049fd314e47835c66809e13e12ab23`). It changes only `app/admin_ui.php`, adds `assets/js/admin-nav-state.js`, `assets/js/admin-nav-state.css`, and includes docs. PHP lint and JS syntax pass, and a Chromium offline DOM test passes initial expansion, collapse persistence, sidebar/page scroll, active route, expand/collapse controls, and mobile overflow. Real browser HTTP navigation remains unverified due sandbox restriction.
+
+The next development session should recover or rebuild the v2.1–v2.6 modules from a verified available source and package them **only after actual source and tests are present**. Do not claim the lost package exists. Keep v2.0 hotfix as the recommended current release for this specific sidebar change.
