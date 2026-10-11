@@ -28,3 +28,10 @@ Commit source and GLB to repository, enable real CI asset builds, browser captur
 
 ## Source sync correction — 2026-10-11
 The original v0.3 `build_gallery_v03.py` Python generator and `deploy/showroom-glb.php` viewer have now been committed to `main`, alongside `optimize_gallery_v03.py` and `tests_v03.py`. GitHub Actions has a scene-generation/validation workflow. The compiled GLB binary and offscreen screenshot contact sheet are still supplied in the downloadable source ZIP, not directly committed into main. A workflow-produced binary artifact may be available after CI runs; verify the run, do not presume success. See issue #1 for closure criteria.
+
+
+## Local v0.7-backed runtime validation patch (2026-10-11; NOT COMMITTED)
+- The separately reported v0.8 archive was unavailable at its supplied /mnt/data path in this runtime. No changes to its grand-piano source are claimed.
+- An isolated v0.7-compatible runtime patch was built locally: room-visibility invalidation (rather than updating group/light/button state each animation frame), allocation-reduced collision functions with 13,650-point grid and sweep parity, 10 exact named geometry-to-DB-slot bindings checked against existing v0.7 GLB, and a 25-preset genuine browser screenshot/FPS harness.
+- Passed local Node structural parity, PHP lint, inline JS parser and fake-database PHP HTTP 200/GLB header tests; original v0.7 GLB unchanged. Browser screenshot/60 FPS verification **not complete**: Chromium navigation returned net::ERR_BLOCKED_BY_ADMINISTRATOR. No real MySQL or mobile test performed.
+- No photorealistic fidelity claim, no new licensed external models, no production edits. Preserve main as v0.3 reference; v0.4 through v0.8 binaries/sources are not in main. Local overlay is not a v0.8 upgrade. Staging-only until browser/DB/collision/asset acceptance.
