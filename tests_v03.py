@@ -1,7 +1,7 @@
 """Structure and safe-upgrade tests. Does not assert browser FPS or deployment success."""
 from pathlib import Path
 from collections import Counter
-import subprocess,re,zipfile
+import subprocess,re,zipfile,tempfile
 import trimesh
 R=Path(__file__).resolve().parent
 A=R/'assets/rooms/luxury-showroom-v03-optimized.glb'
@@ -23,6 +23,10 @@ php=R/'deploy/showroom-glb.php'
 assert subprocess.run(['php','-l',str(php)],capture_output=True,check=True).returncode==0
 p=php.read_text();assert "require_install()" in p and 'cart.php' in p and 'luxury-showroom-v03-optimized.glb' in p
 assert '<?=json_encode($catalog' in p and '<?=json_encode($csrf' in p
-assert subprocess.run(['node','--check',str(R/'preview-site/viewer.mjs')],capture_output=True,check=True).returncode==0
+module=p.split('<script type="module">',1)[1].split('</script>',1)[0]
+module=module.replace('<?=json_encode($catalog,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT)?>','[]').replace('<?=json_encode($csrf,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT)?>','""')
+with tempfile.TemporaryDirectory() as temp:
+ testjs=Path(temp)/'viewer.mjs';testjs.write_text(module)
+ assert subprocess.run(['node','--check',str(testjs)],capture_output=True,check=True).returncode==0
 print('PASS: GLB: 5 rooms, distinct exhibit picks, PBR mats, textures, non-billboard geometry, PHP+JS syntax')
 print('MESHS',len(names),'PICKABLE',len([x for x in names if x.startswith('interact_')]),'BYTES',A.stat().st_size)
