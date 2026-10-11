@@ -28,3 +28,7 @@ python tests_v05.py
 The generated file is `assets/rooms/luxury-showroom-v05-optimized.glb`. Main contains the generators, PHP preview viewer `deploy/showroom-glb-v05.php`, and regression tests. The committed GitHub Actions workflow rebuilds and validates the GLB and publishes a binary artifact; CI success must be checked separately. A separate install-safe deployment package was generated in the ChatGPT conversation.
 
 The **v0.5 models are not yet photo-realistic** or visually approved; the approved images remain a target, not backgrounds. See PROJECT_STATUS.md, SESSION_HANDOFF.md and docs/BUILD_PROGRESS.md. Do not overwrite a live site's `index.php`, `app/bootstrap.php`, database configuration, `install/` or customer files.
+
+
+## Most recent staged model: v0.11 (not production)
+Piano & Strings geometry has been remodeled and passed local GLB/PHP/JS/fake-DB checks. The compiled GLB and v0.11 builder are in the downloadable source archive, not yet in GitHub. See PROJECT_STATUS.md for precise verification and limitations. Do not replace production index.php, database configuration, or installer with staged assets. The user-approved photographs remain the visual target; this GLB is not yet photo-realistic or benchmarked at 60 FPS.
