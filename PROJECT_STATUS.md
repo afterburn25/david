@@ -24,3 +24,7 @@ Commit source and GLB to repository, enable real CI asset builds, browser captur
 - The full `build_gallery_v03.py`, `deploy/showroom-glb.php`, and optimized GLB binary are **still only in the downloadable source ZIP**, not the repository. See [GitHub issue #1](https://github.com/afterburn25/david/issues/1). Do not claim the GitHub source is complete yet.
 - Fidelity improvements/asset sourcing tracked at [issue #2](https://github.com/afterburn25/david/issues/2).
 - The CI workflow exists but source-dependent validation cannot go green until issue #1 is resolved.
+
+
+## Source sync correction — 2026-10-11
+The original v0.3 `build_gallery_v03.py` Python generator and `deploy/showroom-glb.php` viewer have now been committed to `main`, alongside `optimize_gallery_v03.py` and `tests_v03.py`. GitHub Actions has a scene-generation/validation workflow. The compiled GLB binary and offscreen screenshot contact sheet are still supplied in the downloadable source ZIP, not directly committed into main. A workflow-produced binary artifact may be available after CI runs; verify the run, do not presume success. See issue #1 for closure criteria.
