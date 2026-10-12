@@ -44,3 +44,7 @@ Fixed broad imported original-store records missing from individual subcategory 
 
 ## v2.9.5 storage repair — one-time host File Manager fix
 If the admin ZIP updater reports no writable PRIVATE directory outside the website, use the [v2.9.5 recovery storage repair](docs/CLASSIC_STOREFRONT_V2_9_5_PRIVATE_STORAGE_FIX.md) before retrying v2.9.4. The manual patch upgrades private-directory discovery, adds a storage-check button and preserves all rollback safeguards. It has passed isolated tests, NOT live-host MySQL or permission verification. This is a non-3D PHP storefront; no 3D reinstatement.
+
+
+## Most recent local staging build — v2.9.8 (NOT DEPLOYED)
+Public Shop category cards and filters hide empty departments and subcategories; admin still retains all 13 parents/58 children. Local source snapshot has 6 parents and 15 children visible. Direct URLs for empty categories return 404; no related-product substitution. All 21 visible nodes use materially different 800x620 transparent built-in category art paths, including category-correct accessory illustrations; user-uploaded MySQL category photos still override and can be reset individually to built-ins. 109 PHP + local real-PHP fake-DB HTTP + Chromium 1440/390 checks pass, no real merchant DB/live test. **Complete PHP/WebP source remains in conversation ZIPs, not this GitHub branch.** Read [v2.9.8 handoff](docs/CLASSIC_STOREFRONT_V2_9_8_POPULATED_CATEGORIES.md). NON-3D storefront only.
