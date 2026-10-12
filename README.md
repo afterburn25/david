@@ -32,3 +32,7 @@ See [v2.8 verified build and safety handoff](docs/CLASSIC_STOREFRONT_V2_8_CATALO
 
 ## Current staging hotfix — v2.9.1 (not deployed)
 Admin Products now includes imported source candidates and stored drafts, guarded manual `DEMO-` sample cleanup, and 31 observed original-shop categories plus eight verified child categories in admin, Shop and a homepage directory. Existing storefront remains navy/gold/ivory and **non-3D**. The exact source ZIP and admin update archive are conversation artifacts, **not yet GitHub executable source**, and real merchant MySQL/Apache tests remain open. Read [v2.9.1 handoff](docs/CLASSIC_STOREFRONT_V2_9_1_ADMIN_CATEGORIES.md) before resuming.
+
+
+## Current streamlined design release — v2.9.3 (local staging, not live)
+13 visual departments, **58 curated subcategory tiles** rather than 103, with transparent category art, customer-facing department pages, admin editor, 45 stable legacy-slug redirects, preserved product/source mappings, and **no manually typed SHA-256 needed for future upgrade ZIPs** (internal checks/rollback still required). The one-time quick-upgrader manually replaces an older SHA-required updater PHP. **Actual v2.9.3 executable PHP/image assets are in conversation downloads, NOT fully GitHub-synced.** Read [v2.9.3 handoff](docs/CLASSIC_STOREFRONT_V2_9_3_STREAMLINED_CATEGORIES.md) before next work session. Keep non-3D classic storefront scope.
