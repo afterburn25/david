@@ -28,3 +28,7 @@ The user added reversible ZIP upgrades, emergency recovery, organized payments/t
 
 ## v2.8 Catalog Review milestone (2026-10-11)
 See [v2.8 verified build and safety handoff](docs/CLASSIC_STOREFRONT_V2_8_CATALOG_APPROVAL.md). This adds an authenticated, paginated review-and-publish center, exact original-store preview → published product linking and an admin-updater-compatible ZIP with verified file rollback tests. All currently imported source products stay browse-only and do NOT represent confirmed stock until merchant review. v2.8 executable PHP/ZIP assets are still only in this conversation's downloads and must be synced to the repository; real PDO MySQL and production checkout remain untested.
+
+
+## Current staging hotfix — v2.9.1 (not deployed)
+Admin Products now includes imported source candidates and stored drafts, guarded manual `DEMO-` sample cleanup, and 31 observed original-shop categories plus eight verified child categories in admin, Shop and a homepage directory. Existing storefront remains navy/gold/ivory and **non-3D**. The exact source ZIP and admin update archive are conversation artifacts, **not yet GitHub executable source**, and real merchant MySQL/Apache tests remain open. Read [v2.9.1 handoff](docs/CLASSIC_STOREFRONT_V2_9_1_ADMIN_CATEGORIES.md) before resuming.
