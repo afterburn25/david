@@ -40,3 +40,7 @@ Admin Products now includes imported source candidates and stored drafts, guarde
 
 ## Current staged improvement — v2.9.4 (not live)
 Fixed broad imported original-store records missing from individual subcategory pages; 114/114 historical browse-only records now classify into specific subcategories based on original category and identifiable product-type title. Explicit admin product-to-subcategory assignment/backfill remains protected, existing sale/stock rules unchanged. Replaced identical cropped subcategory images with 58 uniquely referenced padded transparent category-art files and `object-fit:contain` without hover zoom. Some category art still needs editorial review; no claim of exact-SKU photos. Upgrader keeps optional external SHA and mandatory internal integrity checks. **Actual v2.9.4 executable source is in conversation ZIPs, not fully synced to this branch.** See [v2.9.4 handoff](docs/CLASSIC_STOREFRONT_V2_9_4_SUBCATEGORY_LINKS_AND_IMAGES.md).
+
+
+## v2.9.5 storage repair — one-time host File Manager fix
+If the admin ZIP updater reports no writable PRIVATE directory outside the website, use the [v2.9.5 recovery storage repair](docs/CLASSIC_STOREFRONT_V2_9_5_PRIVATE_STORAGE_FIX.md) before retrying v2.9.4. The manual patch upgrades private-directory discovery, adds a storage-check button and preserves all rollback safeguards. It has passed isolated tests, NOT live-host MySQL or permission verification. This is a non-3D PHP storefront; no 3D reinstatement.
